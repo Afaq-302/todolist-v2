@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const _=require("lodash")
+const _ = require("lodash")
 
 
 const app = express();
@@ -11,7 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 mongoose.set('strictQuery', true);
 
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+mongoose
+  .connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .then(() => console.log('Database Connected'))
+  .catch(err => console.log(err));
 
 const itemsSchema = {
   name: String
@@ -77,7 +81,7 @@ app.post("/", function (req, res) {
 });
 
 app.post("/delete", function (req, res) {
-  
+
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
