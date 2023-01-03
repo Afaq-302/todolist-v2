@@ -12,8 +12,12 @@ app.use(express.static("public"));
 mongoose.set('strictQuery', true);
 
 // mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+const url = "mongodb://127.0.0.1:27017/todolistDB";
 mongoose
-  .connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log('Database Connected'))
   .catch(err => console.log(err));
 
