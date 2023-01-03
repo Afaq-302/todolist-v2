@@ -1,8 +1,8 @@
 html {
   background-color: #E4E9FD;
   background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
-  /* min-height: 1000px; */
-  height: 100vh;
+  min-height: 1000px;
+  /* max-height: 100vh; */
   font-family: 'helvetica neue';
   
 }
@@ -95,3 +95,7 @@ footer {
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
+
+@media (max-width:768px){
+}
+

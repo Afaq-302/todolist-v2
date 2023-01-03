@@ -11,15 +11,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 mongoose.set('strictQuery', true);
 
-// mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
-const url = "mongodb+srv://ufaq302:khan12345@cluster0.1mekptf.mongodb.net/?retryWrites=true&w=majority"
-mongoose
-  .connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('Database Connected'))
-  .catch(err => console.log(err));
+mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+
+// const url = "mongodb+srv://ufaq302:khan12345@cluster0.1mekptf.mongodb.net/?retryWrites=true&w=majority"
+// mongoose
+//   .connect(url, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(() => console.log('Database Connected'))
+//   .catch(err => console.log(err));
 
 const itemsSchema = {
   name: String
@@ -142,7 +143,7 @@ app.get("/:customListName", function (req, res) {
 app.get("/about", function (req, res) {
   res.render("about");
 });
-
+ 
 
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
